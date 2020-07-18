@@ -5,7 +5,7 @@ plays = games[games['type'] == 'play']
 strike_outs = plays[plays['event'].str.contains('K')]
 
 strike_outs = strike_outs.groupby(['year','game_id']).size().reset_index(name='strike_outs')
-strike_outs=strike_outs.loc[:,['year','strike_outs']].apply(pd.to_numeric)
+strike_outs = strike_outs.loc[:,['year','strike_outs']].apply(pd.to_numeric)
 strike_outs.plot(x='year',y='strike_outs',label='Strike Outs',kind='scatter')
 plt.legend()
 plt.show()
